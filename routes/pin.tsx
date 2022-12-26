@@ -4,7 +4,7 @@ const Pin = require('../models/pin');
 
 //create a pin
 
-router.post("/", async (req,res)=>{
+router.post("/", async (req: any,res: any)=>{
     const newPin = new Pin(req.body);
     try{
         const savedPin = await newPin.save();
@@ -16,7 +16,7 @@ router.post("/", async (req,res)=>{
 
 //get a single pin
 
-router.get("/:id", async (req,res)=>{
+router.get("/:id", async (req: any,res: any)=>{
     try{
         const pin = await Pin.findOne( { _id: req.params.id } );
         res.status(200).json(pin);
@@ -29,7 +29,7 @@ router.get("/:id", async (req,res)=>{
 
 //get all pins
 
-router.get("/", async (req,res)=>{
+router.get("/", async (req: any,res: any)=>{
     try{
         const pin = await Pin.find();
         res.status(200).json(pin);
@@ -41,7 +41,7 @@ router.get("/", async (req,res)=>{
 
 //delete a pin
 
-router.delete("/:id", async (req,res)=>{
+router.delete("/:id", async (req: any,res: any)=>{
     try{
         const pin = await Pin.findOneAndDelete({ _id: req.params.id });
         res.status(200).json(pin);
@@ -53,7 +53,7 @@ router.delete("/:id", async (req,res)=>{
 
 //update pin
 
-router.patch("/:id", async (req,res)=>{
+router.patch("/:id", async (req: any,res: any)=>{
     try{
         const pin = await Pin.findByIdAndUpdate( req.params.id, req.body);
         res.status(200).json(pin);
